@@ -1,7 +1,7 @@
 import React,{useState,FC} from 'react'
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { addToCart,removefromCart } from '../../redux/slicers/cartslice';
 
 

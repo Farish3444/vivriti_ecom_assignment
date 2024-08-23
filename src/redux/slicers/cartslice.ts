@@ -8,8 +8,10 @@ interface CartItem {
     quantity: number;
 }
 
+
 interface cartState {
   cartitems:CartItem[];
+
 }
 
 const initialState:cartState = {
@@ -22,7 +24,6 @@ export const cartSlice = createSlice({
     initialState,
     reducers:{
         addToCart:(state,action)=>{
-                const existingitem = state.cartitems.find(f =>f.id === action.payload.id)
                 state.cartitems.push(action.payload)  
         },
         removefromCart:(state,action)=>{
