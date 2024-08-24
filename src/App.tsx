@@ -9,7 +9,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-
+import Footer from './components/footer/footer';
 const Cartlist = lazy(()=>import('./modules/Cartlist'));
 
 const queryClient = new QueryClient();
@@ -37,12 +37,15 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App mx-auto px-10">
+    <>
   <QueryClientProvider client={queryClient}>
       {/* <Headercomp /> */}
+    <div className="App mx-auto px-10">
       <RouterProvider router={router} />
-  </QueryClientProvider>  
     </div>
+      <Footer />
+  </QueryClientProvider>  
+    </>
   );
 }
 
