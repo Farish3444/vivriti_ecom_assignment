@@ -26,7 +26,8 @@ const Headercomp = () => {
 
   return (
     <>
-     
+    <div className='mx-auto'>
+       
       <nav className="flex items-start justify-between p-4">
   
   <div className="flex items-center">
@@ -49,7 +50,7 @@ const Headercomp = () => {
   </div>
 
   <div className="flex items-center space-x-8 text-gray-400 mt-2">
-    <a  className="hover:text-black" onClick={()=>navigate('/')}>Store</a>
+    <a  className="hover:text-black" onClick={()=>navigate('/productlist')}>Store</a>
     <a  className="hover:text-black">Account</a>
     <a  className="hover:text-black">Wish List</a>
     <a  className="hover:text-black flex items-center" onClick={()=>navigate('/cart')}>
@@ -74,6 +75,8 @@ const Headercomp = () => {
 </div>
 
       <Outlet />
+
+    </div>  
     </>
   )
 }

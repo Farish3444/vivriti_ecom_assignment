@@ -8,20 +8,34 @@ import {
   RouterProvider,
   Route,
   Link,
+  Navigate
 } from "react-router-dom";
 import Footer from './components/footer/footer';
+import toast, { Toaster } from 'react-hot-toast';
+import Protectedroute from './components/route/protectedroute';
 const Cartlist = lazy(()=>import('./modules/Cartlist'));
+const Login = lazy(()=>import('./modules/login/login'));
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
+    path:'/login',
+    element:<Login />
+  },
+  {
     path: "/",
     element: (<Headercomp />),
     children:[
       {
-        path:'/',
-        element: <> <Productlist /> </>
+        path: "/",
+        element: <Navigate to="/login" replace />,
+      },
+      {
+        path:'/productlist',
+        element: <> 
+       <Protectedroute element={<Productlist />} />
+         </>
       },
       {
         path: "cart",
@@ -32,18 +46,20 @@ const router = createBrowserRouter([
         </>,
       },
     ]
-  },
+  }
 ]);
 
 function App() {
   return (
     <>
+    <Toaster />
   <QueryClientProvider client={queryClient}>
-      {/* <Headercomp /> */}
-    <div className="App mx-auto px-10">
+      
+    <div className="App px-10">
       <RouterProvider router={router} />
     </div>
-      <Footer />
+    <Footer />
+      
   </QueryClientProvider>  
     </>
   );

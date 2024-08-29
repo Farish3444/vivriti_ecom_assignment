@@ -5,6 +5,7 @@ import axios from 'axios';
 import Productcard from '../components/cards/productcard';
 import { RootState } from '../redux/store';
 import Config from '../config/api.json';
+import Headercomp from '../components/header/headercomp';
 
 const queryClient = new QueryClient();
 
@@ -37,12 +38,12 @@ const Productlist = () => {
     }, []);
   
     const fetchProducts = async()=>{
-        const response = await axios.get(Config.local_env);
+        const response = await axios.get(`${Config.local_env}/products`);
         return response.data.products;
     }
 
     const fetchsearchproducts = async()=>{
-      const response = await axios.get(`${Config.local_env}/search?q=${inputvalue}`);
+      const response = await axios.get(`${Config.local_env}/products/search?q=${inputvalue}`);
       return response.data.products;
     }
 
